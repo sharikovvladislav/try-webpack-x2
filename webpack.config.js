@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -17,14 +18,24 @@ module.exports = {
     new webpack.DefinePlugin({
       NODE_ENV: JSON.stringify(NODE_ENV),
       USER: process.env.USER
-    })
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true
+    }),
   ],
 
   module: {
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel-loader?presets[]=es2017&presets[]=es2015'
+        exclude: [/node_modules/],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2017', 'es2015'],
+            plugins: ['transform-runtime']
+          }
+        }
       }
     ]
   }

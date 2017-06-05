@@ -1,11 +1,15 @@
 import welcome from './welcome';
 
-const getter = async () => {
-  const result = await fetch('http://google.com');
+const requestPackageJson = () => {
+  return fetch('/package.json')
+    .then(response => {
+      return response.json();
+    });
+}
+const getPackageJson = async () => {
+  const result = await requestPackageJson();
   console.log(result);
-  return result;
 };
-
-console.log(getter()); 
+console.log(getPackageJson()); 
 
 welcome(`World ${1+2}`);
