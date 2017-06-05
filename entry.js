@@ -10,6 +10,9 @@ const getPackageJson = async () => {
   const result = await requestPackageJson();
   console.log(result);
 };
-console.log(getPackageJson()); 
-
-welcome(`World ${1+2}`);
+async function main () {
+  console.log(await getPackageJson()); 
+  welcome(`World ${2**4}`);
+}
+main();
+ 

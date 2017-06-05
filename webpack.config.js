@@ -32,7 +32,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['es2017', 'es2015'],
+            presets: ['es2017', 'es2016', 'es2015'],
             plugins: ['transform-runtime']
           }
         }
