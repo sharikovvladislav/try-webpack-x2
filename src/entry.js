@@ -1,10 +1,7 @@
-import welcome from './welcome';
+import welcome from '../welcome';
 
 const requestPackageJson = () => {
-  return fetch('/package.json')
-    .then(response => {
-      return response.json();
-    });
+  return fetch('main.bundle.js');
 }
 const getPackageJson = async () => {
   const result = await requestPackageJson();

@@ -1,18 +1,20 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
-  entry: ['babel-polyfill', './entry.js'],
-  output: {
-    filename: './main.js'
-  },
-  watch: NODE_ENV === 'development',
-  watchOptions: {
-    aggregateTimeout: 200
-  },
-  devtool: NODE_ENV === 'development' ? 'source-map' : 'eval',
+    entry: ['babel-polyfill', './src/entry.js'],
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'main.bundle.js'
+    },
+    watch: NODE_ENV === 'development',
+    watchOptions: {
+        aggregateTimeout: 200
+    },
+    devtool: NODE_ENV === 'development' ? 'source-map' : 'eval',
 
   plugins: [
     new webpack.DefinePlugin({
@@ -22,6 +24,7 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true
     }),
+    new HtmlWebpackPlugin()
   ],
 
   module: {
