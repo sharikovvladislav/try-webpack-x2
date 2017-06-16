@@ -1,15 +1,15 @@
 import welcome from './welcome';
 
 function main (): void {
-  welcome(`World ${2**4}`);
+  welcome(`World ${2**4}`, 123);
 
-  let num: Number;
+  let num: number;
 
   num = 1;
 
   const s: String = '123';
 
-  if (welcome(num)) {
+  if (welcome('123', num)) {
 
   }
 }

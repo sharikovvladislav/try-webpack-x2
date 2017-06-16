@@ -24,9 +24,9 @@ module.exports = {
       NODE_ENV: JSON.stringify(NODE_ENV),
       USER: process.env.USER
     }),
-    // new webpack.optimize.UglifyJsPlugin({
-    //   sourceMap: true
-    // }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true
+    }),
     new HtmlWebpackPlugin()
   ],
 
